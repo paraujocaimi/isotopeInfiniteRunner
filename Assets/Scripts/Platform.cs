@@ -5,10 +5,11 @@ using UnityEngine;
 public class Platform : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider) {
-		if (collider.gameObject.tag == "Player") {
-			Invoke ("FallDown", 0.6f);
-		}
-	}
+        if (collider.gameObject.layer == 11)
+        {
+            Invoke("FallDown", 1.0f);
+        }
+    }
 
 	private void FallDown() {
 		this.GetComponentInParent<Rigidbody>().isKinematic = false;

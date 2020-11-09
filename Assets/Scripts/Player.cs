@@ -20,9 +20,9 @@ public class Player : MonoBehaviour {
 	GameObject particle;
 
 	[SerializeField]
-	GameObject gems;
+    GameObject alfa, beta, ec, neutron;
 
-	[SerializeField]
+    [SerializeField]
 	private Text scoreText;
 	private int score = 0;
 
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
 			// If the game hasen't started yet.
 			if (hasPlayerStarted == false) {
 				hasPlayerStarted = true;
-				StartCoroutine (ShowGems (2.5f));
+				StartCoroutine (ShowGems (2.0f));
 			}
 				
 			ChangeBoolean ();
@@ -55,13 +55,17 @@ public class Player : MonoBehaviour {
 
 	// Hide the gems for the first 2.5 seconds (avoiding bugs).
 	IEnumerator ShowGems (float count) {
-		yield return new WaitForSeconds (count);
+        yield return new WaitForSeconds(count);
+        // Checks if player hasn't fallen off before showing grms.
+        if (canMove == true)
+        {
+            alfa.SetActive(true);
+            beta.SetActive(true);
+            ec.SetActive(true);
+            neutron.SetActive(true);
 
-		// Checks if player hasn't fallen off before showing grms.
-		if (canMove == true) {
-			gems.SetActive (true);
-		}
-	}
+        }
+    }
 		
 
 	// Control player direction.

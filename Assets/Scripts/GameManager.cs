@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	private Vector3 lastPosition;
 
 	[SerializeField]
-	GameObject gems;
+	GameObject alfa, beta, eletronCaptura, neutron;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 
 		// Call the SpawnPlatform every 2 seconds.
 		InvokeRepeating ("SpawnPlatform", 2f, 0.2f);
+        Invoke ("SpawnEmission", 0.2f);
 	}
 	
 
@@ -44,11 +45,26 @@ public class GameManager : MonoBehaviour {
 			SpawnZ ();
 		}
 
-		if (gemsRandom < 2) {
-			SpawnGem ();
-		}
 	}
-	private void SpawnX() {
+
+    private void SpawnEmission () {
+		int emissionRandom = Random.Range (0, 15);
+
+		if (emissionRandom < 3) {
+			SpawnTypeEmission ("ecColor", eletronCaptura);
+		} else if (emissionRandom >= 3 & emissionRandom < 6) {
+			SpawnTypeEmission ("betaColor", beta);
+		} else if (emissionRandom >= 6 & emissionRandom < 13) {
+			SpawnTypeEmission ("neutronColor", neutron);
+		} else {
+			SpawnTypeEmission ("alfaColor", alfa);
+
+		}
+		Invoke ("SpawnEmission", Random.Range (1, 2));
+
+	}
+
+    private void SpawnX() {
 		GameObject _platform = Instantiate (platform) as GameObject;
 		_platform.transform.position = lastPosition + new Vector3 (size, 0f,0f);
 		lastPosition = _platform.transform.position;
@@ -70,12 +86,11 @@ public class GameManager : MonoBehaviour {
 
 
 	// Spawn a random gem.
-	private void SpawnGem() {
-		Instantiate (gems, lastPosition+ new Vector3(0f,0.7f,0f), gems.transform.rotation);
+	private void SpawnTypeEmission (string color, GameObject emission) {
+		Instantiate (emission, lastPosition + new Vector3 (0f, 0.7f, 0f), emission.transform.rotation);
 
 		// Assigns a material named "Assets/Resources/Color" (plus the random int) to the object.
-		int rand = Random.Range(1,3);
-		Material newMat = Resources.Load("Color" + (rand.ToString()), typeof(Material)) as Material;
-		gems.GetComponent<Renderer>().material = newMat;
+		Material newMat = Resources.Load (color, typeof (Material)) as Material;
+		emission.GetComponent<Renderer> ().material = newMat;
 	}
 }
