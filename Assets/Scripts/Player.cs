@@ -127,6 +127,7 @@ public class Player : MonoBehaviour {
 
     private void GetEmission(Emition_Type.TypesEmittion emittion_type){
 
+        bool exists = false;
 
         switch (emittion_type)
         {
@@ -151,8 +152,16 @@ public class Player : MonoBehaviour {
 
             if(element_z_value == isotope.Z && element_a_value == isotope.A) {
                 element_name_value = isotope.Atomic;
+                exists = true;
                 Debug.Log("Atomic: " + element_name_value);
             }
+
+            
+
+        }
+
+        if(exists.Equals(false)){
+            Debug.Log("Elemento não existe");
         }
 
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
