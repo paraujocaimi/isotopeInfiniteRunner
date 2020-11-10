@@ -11,6 +11,10 @@ public class Player : MonoBehaviour {
     private int element_z_value = 1;
     private string element_name_value = "H";
 
+    public GameObject elementNoExist, isDead;
+    public string noElement;
+
+
 	private Rigidbody rb;
 	private bool isMovingRight = false;
 	private bool hasPlayerStarted = false;
@@ -94,15 +98,17 @@ public class Player : MonoBehaviour {
 	// When the player falls off the platform.
 	private void FallDown() {
 		canMove = false;
-		rb.velocity = new Vector3 (0f,-4f,0f);
+        rb.velocity = new Vector3(0f, -4f, 0f);
+        isDead.SetActive(true);
 
-		// Retutn to main menu.
-		StartCoroutine (ReturnToMainMenu (2.8f));
+        // Retutn to main menu.
+        StartCoroutine(ReturnToMainMenu(1.5f, 0));
 	}
+
 	// Return to main menu.
-	IEnumerator ReturnToMainMenu (float count) {
+	IEnumerator ReturnToMainMenu (float count, int sceane) {
 		yield return new WaitForSeconds (count);
-		Application.LoadLevel(0);
+		Application.LoadLevel(sceane);
 	}
 
 
@@ -161,6 +167,12 @@ public class Player : MonoBehaviour {
         }
 
         if(exists.Equals(false)){
+            elementNoExist.SetActive(true);
+            noElement = "Átomo " + element_name_value.ToString() + "\nA: " + element_a_value.ToString() + "\nZ: " + element_z_value.ToString() ;
+            
+            canMove = false;
+		    // Retutn to main menu.
+            StartCoroutine(ReturnToMainMenu(1.5f, 0));
             Debug.Log("Elemento não existe");
         }
 
