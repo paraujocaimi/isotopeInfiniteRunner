@@ -4,13 +4,13 @@
 
 ### :information_source: **Versão 1.0** 
 
-- Jogo:
+- :rotating_light: Jogo:
     - Emissões: alfa,beta,gama,neutron :heavy_check_mark:
     - hud com elemento :heavy_check_mark:
     - alteração do elemento conforme captura da emissão :heavy_check_mark:
-	- notificação em tela endGame :x:
-			- cair da plataforma
-			- elemento não existe
+	- notificação em tela endGame :x: </br>
+			- cair da plataforma </br>
+			- elemento não existe </br>
 
 - Download: 
     EM BREVE! 
