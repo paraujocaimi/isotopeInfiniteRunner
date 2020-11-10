@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	// Initialize variables.
+    public HUD hud;
+    private int element_a_value = 1;
+    private int element_z_value = 1;
+    private string element_name_value = "H";
+
 	private Rigidbody rb;
 	private bool isMovingRight = false;
 	private bool hasPlayerStarted = false;
@@ -26,6 +31,10 @@ public class Player : MonoBehaviour {
 	private Text scoreText;
 	private int score = 0;
 
+    private void Awake()
+    {
+        hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -99,6 +108,7 @@ public class Player : MonoBehaviour {
 
 	// When the player hits a gem.
 	void OnTriggerEnter(Collider other) {
+
 		if (other.gameObject.tag == "Gem") {
 
 			// Remove the gem.
@@ -114,4 +124,37 @@ public class Player : MonoBehaviour {
 			scoreText.text = "Score: " + score.ToString();
 		}
 	}
+
+    private void GetEmission(Emition_Type.TypesEmittion emittion_type){
+
+
+        switch (emittion_type)
+        {
+            case Emition_Type.TypesEmittion.Alfa:
+                element_a_value += -4;
+                element_z_value += -2;
+                break;
+            case Emition_Type.TypesEmittion.BetaMinus:
+                element_z_value += +1;
+                break;
+            case Emition_Type.TypesEmittion.Eletronic:
+                element_z_value += -1;
+                break;
+            case Emition_Type.TypesEmittion.Neutron:
+                element_a_value += 1;
+                break;
+        }
+
+        Debug.Log("A["+element_a_value+"] - Z["+element_z_value+"]");
+
+        foreach(Isotope isotope in JSONReader.emissionJson.isotopes) {
+
+            if(element_z_value == isotope.Z && element_a_value == isotope.A) {
+                element_name_value = isotope.Atomic;
+                Debug.Log("Atomic: " + element_name_value);
+            }
+        }
+
+        hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
+    }
 }

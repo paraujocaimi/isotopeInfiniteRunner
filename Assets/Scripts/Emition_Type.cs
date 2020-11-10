@@ -5,7 +5,7 @@ using UnityEngine;
 public class Emition_Type : MonoBehaviour
 {
     //Define type of emition
-    public enum TypesEmittion { Alfa, BetaPlus, BetaMinus, Eletronic, Neutron }
+    public enum TypesEmittion { Alfa,BetaMinus, Eletronic, Neutron }
 
     [SerializeField]
     GameObject particle;
@@ -21,15 +21,8 @@ public class Emition_Type : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
 
-            // Create the particle effect.
-            GameObject _particle = Instantiate(particle) as GameObject;
-            _particle.transform.position = this.transform.position;
-            Destroy(_particle, 1f);
-
-            collision.gameObject.SendMessage("GetEmition", type_emition);
-
-            // Remove the gem.
-            Destroy(this.gameObject);
+            Debug.Log("GetEmition " + type_emition);
+            collision.gameObject.SendMessage("GetEmission", type_emition);
 
         }
 
