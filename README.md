@@ -2,12 +2,15 @@
 
 ## **Versões**
 
-### :triangular_flag_on_post: **Versão 1.0** 
+### :information_source: **Versão 1.0** 
 
 - Jogo:
-    - Emissões: alfa,beta,gama,neutron
-    - hud com elemento
-    - alteração do elemento conforme captura da emissão
+    - Emissões: alfa,beta,gama,neutron :heavy_check_mark:
+    - hud com elemento :heavy_check_mark:
+    - alteração do elemento conforme captura da emissão :heavy_check_mark:
+	- notificação em tela endGame :x:
+			- cair da plataforma
+			- elemento não existe
 
 - Download: 
     EM BREVE! 
