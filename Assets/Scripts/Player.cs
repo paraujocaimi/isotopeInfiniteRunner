@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
 	private Text scoreText;
 	private int score = 0;
+    private static string BEST_SCORE = "BEST_SCORE";
+    private static string LAST_SCORE = "LAST_SCORE";
 
     private void Awake()
     {
@@ -108,6 +110,7 @@ public class Player : MonoBehaviour {
         canMove = false;
         rb.velocity = new Vector3(0f, -4f, 0f);
         StartCoroutine(ReturnToMainMenu(1.5f, 0));
+        salvarScore(score);
     }
 
     // Return to main menu.
@@ -131,10 +134,31 @@ public class Player : MonoBehaviour {
 			Destroy (_particle, 1f);
 
 			// Update the score.
-			score++;
-			scoreText.text = "Score: " + score.ToString();
+			//score++;
+			//scoreText.text = "Score: " + score.ToString();
 		}
 	}
+
+    public void UpdateScore()
+    {
+        score++;
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void salvarScore(int score)
+    {
+        int currentBestScore = PlayerPrefs.GetInt(BEST_SCORE, 0);
+        int pontuacao = int.Parse(scoreText.text);
+
+        currentBestScore = Mathf.Max(currentBestScore, pontuacao);
+        scoreText.text = currentBestScore.ToString();
+
+        PlayerPrefs.SetInt(LAST_SCORE, score);
+        PlayerPrefs.SetInt(BEST_SCORE, currentBestScore);
+
+        Debug.Log("BEST_SCORE: " + PlayerPrefs.GetInt("BEST_SCORE"));
+        Debug.Log("LAST_SCORE: " + PlayerPrefs.GetInt("LAST_SCORE"));
+    }
 
     private void GetEmission(Emition_Type.TypesEmittion emittion_type){
 
@@ -163,9 +187,8 @@ public class Player : MonoBehaviour {
             if(element_z_value == isotope.Z && element_a_value == isotope.A) {
                 element_name_value = isotope.Atomic;
                 exists = true;
+                UpdateScore();
             }
-
-            
 
         }
 
