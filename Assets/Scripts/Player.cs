@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
     private string element_name_value = "H";
 
     public GameObject elementNoExist, isDead;
-    public string noElement;
 
 
 	private Rigidbody rb;
@@ -43,6 +42,8 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody> ();
+        elementNoExist.SetActive(false);
+        isDead.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -85,7 +86,8 @@ public class Player : MonoBehaviour {
 	private void ChangeBoolean() {
 		isMovingRight = !isMovingRight;
 	}
-	private void ChangeDirection() {
+
+    private void ChangeDirection() {
 		if (isMovingRight == true) {
 			rb.velocity = new Vector3 (speed, 0f, 0f);
 		} 
@@ -97,16 +99,19 @@ public class Player : MonoBehaviour {
 
 	// When the player falls off the platform.
 	private void FallDown() {
-		canMove = false;
-        rb.velocity = new Vector3(0f, -4f, 0f);
         isDead.SetActive(true);
+        finishGame();
+    }
 
-        // Retutn to main menu.
+    private void finishGame()
+    {
+        canMove = false;
+        rb.velocity = new Vector3(0f, -4f, 0f);
         StartCoroutine(ReturnToMainMenu(1.5f, 0));
-	}
+    }
 
-	// Return to main menu.
-	IEnumerator ReturnToMainMenu (float count, int sceane) {
+    // Return to main menu.
+    IEnumerator ReturnToMainMenu (float count, int sceane) {
 		yield return new WaitForSeconds (count);
 		Application.LoadLevel(sceane);
 	}
@@ -152,14 +157,12 @@ public class Player : MonoBehaviour {
                 break;
         }
 
-        Debug.Log("A["+element_a_value+"] - Z["+element_z_value+"]");
 
         foreach(Isotope isotope in JSONReader.emissionJson.isotopes) {
 
             if(element_z_value == isotope.Z && element_a_value == isotope.A) {
                 element_name_value = isotope.Atomic;
                 exists = true;
-                Debug.Log("Atomic: " + element_name_value);
             }
 
             
@@ -168,12 +171,7 @@ public class Player : MonoBehaviour {
 
         if(exists.Equals(false)){
             elementNoExist.SetActive(true);
-            noElement = "Átomo " + element_name_value.ToString() + "\nA: " + element_a_value.ToString() + "\nZ: " + element_z_value.ToString() ;
-            
-            canMove = false;
-		    // Retutn to main menu.
-            StartCoroutine(ReturnToMainMenu(1.5f, 0));
-            Debug.Log("Elemento não existe");
+            finishGame();
         }
 
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);

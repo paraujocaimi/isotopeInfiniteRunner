@@ -8,7 +8,6 @@ public class JSONReader : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(jsonFile.text);
         emissionJson = JsonUtility.FromJson<EmissionList>(jsonFile.text);
     }
 }
