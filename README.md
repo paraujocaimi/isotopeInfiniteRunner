@@ -8,12 +8,12 @@
     - Emissões: alfa,beta,gama,neutron :heavy_check_mark:
     - hud com elemento :heavy_check_mark:
     - alteração do elemento conforme captura da emissão :heavy_check_mark:
-	- notificação em tela endGame :x: </br>
+	- notificação em tela endGame :heavy_check_mark: </br>
 			- cair da plataforma </br>
 			- elemento não existe </br>
 
 - Download: 
-    EM BREVE! 
+    https://github.com/paraujocaimi/isotopeInfiniteRunner/releases 
     
 ### Base utilizada para a construção do projeto 
 
