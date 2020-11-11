@@ -21,7 +21,6 @@ public class Emition_Type : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
 
-            Debug.Log("GetEmition " + type_emition);
             collision.gameObject.SendMessage("GetEmission", type_emition);
 
         }
