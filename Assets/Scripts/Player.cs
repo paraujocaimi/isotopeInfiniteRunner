@@ -13,13 +13,9 @@ public class Player : MonoBehaviour {
 
     public GameObject elementNoExist, isDead;
 
-
 	private Rigidbody rb;
-	private bool isMovingRight = false;
-	private bool hasPlayerStarted = false;
 
-	[SerializeField]
-	float speed = 4f;
+
 
 	[HideInInspector]
 	public bool canMove = true;
@@ -28,13 +24,33 @@ public class Player : MonoBehaviour {
 	GameObject particle;
 
 	[SerializeField]
+    //emissions
     GameObject alfa, beta, ec, neutron;
 
     [SerializeField]
+    //score
 	private Text scoreText;
 	private int score = 0;
     private static string BEST_SCORE = "BEST_SCORE";
     private static string LAST_SCORE = "LAST_SCORE";
+
+    //moviments
+    [SerializeField]
+    float speed = 4f;
+    private enum UserInput
+    {
+        NONE, TAP, SWIPE
+    }
+    private Vector3 Direction;
+    private UserInput userInput;
+    private Vector3 fp;   //First touch position
+    private Vector3 lp;   //Last touch position
+    private float dragDistance;  //minimum distance for a swipe to be registered
+    private bool isGrounded = true;
+    private bool isMovingRight = false;
+    private bool hasPlayerStarted = false;
+
+
 
     private void Awake()
     {
@@ -46,31 +62,170 @@ public class Player : MonoBehaviour {
 		rb = this.GetComponent<Rigidbody> ();
         elementNoExist.SetActive(false);
         isDead.SetActive(false);
-	}
+
+        // inicializando variaveis para mobile
+        Direction = Vector3.zero;
+        userInput = UserInput.NONE;
+        dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
+
+        if (canMove == true)
+        {
+            Direction = Vector3.zero;
+        }
+    }
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0) && canMove == true) {
 
-			// If the game hasen't started yet.
-			if (hasPlayerStarted == false) {
-				hasPlayerStarted = true;
-				StartCoroutine (ShowGems (2.0f));
-			}
-				
-			ChangeBoolean ();
-			ChangeDirection ();
-		}
+        UpdateUserInput();
+
+        if(canMove == true)
+        {
+            speed = 3;
+
+            //mobile moviment
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                if (userInput == UserInput.TAP)
+                {
+                    MovimentPlayer();
+                }
+
+                if (userInput == UserInput.SWIPE && isGrounded)
+                {
+                    JumpPlayer();
+                }
+                //voltando ao status de rolando
+                userInput = UserInput.NONE;
+            }
+            // desktop moviment
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+
+                    // If the game hasen't started yet.
+                    if (hasPlayerStarted == false)
+                    {
+                        hasPlayerStarted = true;
+                        StartCoroutine(ShowGems(2.0f));
+                    }
+
+                    ChangeBoolean();
+                    ChangeDirection();
+                }
+                else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                {
+                    JumpPlayer();
+                }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    pressESC();
+                }
+            }
+        }
 
 		if (Physics.Raycast (this.transform.position, Vector3.down * 2) == false) {
 			FallDown ();
 		}
 	}
 
+    private void FixedUpdate()
+    {
+        if (hasPlayerStarted)
+        {
+            moviment();
+        }
 
+    }
 
-	// Hide the gems for the first 2.5 seconds (avoiding bugs).
-	IEnumerator ShowGems (float count) {
+    private void UpdateUserInput()
+    {
+        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        {
+            Touch touch = Input.GetTouch(0); // get the touch
+            if (touch.phase == TouchPhase.Began) //check for the first touch
+            {
+                fp = touch.position;
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
+            {
+                lp = touch.position; //last touch position
+
+                //Check if drag distance is greater than 10% of the screen height
+                if (lp.y > fp.y + dragDistance)
+                {
+                    userInput = UserInput.SWIPE;
+                }
+            }
+            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
+            {
+                lp = touch.position; //last touch position
+
+                //Check if drag distance is greater than 10% of the screen height
+                if (lp.y > fp.y + dragDistance)
+                {
+                    userInput = UserInput.SWIPE;
+                }
+                else
+                {   //It's a tap as the drag distance is less than 10% of the screen height
+                    userInput = UserInput.TAP;
+                }
+            }
+        }
+        else
+        {
+            userInput = UserInput.NONE;
+        }
+    }
+
+    public void moviment()
+    {
+        if (isMovingRight == true)
+        {
+            rb.velocity = new Vector3(speed, rb.velocity.y, 0f);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, speed);
+        }
+    }
+
+    public void Jump()
+    {
+        //Check if player is grounded
+        rb.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2, ForceMode.Impulse);
+    }
+
+    public void JumpPlayer()
+    {
+        if (isGrounded == true)
+        {
+            Jump();
+            isGrounded = true;
+        }
+
+    }
+
+    public void MovimentPlayer()
+    {
+        if (hasPlayerStarted == false)
+        {
+            hasPlayerStarted = true;
+        }
+
+        ChangeBoolean();
+        moviment();
+
+        if (Physics.Raycast(new Vector3(this.transform.position.x, 0.7f, this.transform.position.z), Vector3.down * 2) == false)
+        {
+            FallDown();
+        }
+    }
+
+    // Hide the gems for the first 2.5 seconds (avoiding bugs).
+    IEnumerator ShowGems (float count) {
         yield return new WaitForSeconds(count);
         // Checks if player hasn't fallen off before showing grms.
         if (canMove == true)
@@ -104,6 +259,14 @@ public class Player : MonoBehaviour {
         isDead.SetActive(true);
         finishGame();
     }
+
+    private void pressESC()
+    {
+        canMove = false;
+        rb.velocity = new Vector3(0f, 0f, 0f);
+        finishGame();
+    }
+
 
     private void finishGame()
     {
