@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelpScreen.unity
     guid: dfb8be8ae4bb30742872cb08eb967c67
+  - enabled: 1
+    path: Assets/Scenes/InfoScreen.unity
+    guid: 849881b1f45823246b88ddec0b152d59
   m_configObjects: {}
