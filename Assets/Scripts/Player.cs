@@ -148,16 +148,13 @@ public class Player : MonoBehaviour {
     public void salvarScore(int score)
     {
         int currentBestScore = PlayerPrefs.GetInt(BEST_SCORE, 0);
-        int pontuacao = int.Parse(scoreText.text);
 
-        currentBestScore = Mathf.Max(currentBestScore, pontuacao);
-        scoreText.text = currentBestScore.ToString();
+        currentBestScore = Mathf.Max(currentBestScore, score);
 
         PlayerPrefs.SetInt(LAST_SCORE, score);
         PlayerPrefs.SetInt(BEST_SCORE, currentBestScore);
 
-        Debug.Log("BEST_SCORE: " + PlayerPrefs.GetInt("BEST_SCORE"));
-        Debug.Log("LAST_SCORE: " + PlayerPrefs.GetInt("LAST_SCORE"));
+
     }
 
     private void GetEmission(Emition_Type.TypesEmittion emittion_type){
