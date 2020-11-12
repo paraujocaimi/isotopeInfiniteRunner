@@ -17,12 +17,12 @@
 
 ### :information_source: **Versão 2.0** 
 
-- MENU: :heavy_check_mark:
-    - Tela do Menu 
-    - Tela de informações: o que cada emissão altera no elemento 
-    - Tela de Ajuda: como movimentar o player
-    - Tela de Score: mostra a última e a melhor pontuação
-- Jogo
+- MENU: 
+    - Tela do Menu :heavy_check_mark:
+    - Tela de informações: o que cada emissão altera no elemento  :heavy_check_mark:
+    - Tela de Ajuda: como movimentar o player :heavy_check_mark:
+    - Tela de Score: mostra a última e a melhor pontuação :heavy_check_mark:
+- Jogo 
   - mobile: Movimento através de Swipe e Tap :heavy_check_mark:
   - desktop: pulo :heavy_check_mark:
 
