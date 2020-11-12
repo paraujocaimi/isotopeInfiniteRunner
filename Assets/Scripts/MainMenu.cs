@@ -25,6 +25,11 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(3);
     }
 
+    public void InformationScreen()
+    {
+        SceneManager.LoadScene(4);
+    }
+
     public void Quit() {
 		Application.Quit();
 	}
