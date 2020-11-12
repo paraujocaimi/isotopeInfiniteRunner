@@ -2,19 +2,6 @@
 
 ## **Versões**
 
-### :information_source: **Versão 1.0** 
-
-- Jogo:
-    - Emissões: alfa,beta,gama,neutron :heavy_check_mark:
-    - hud com elemento :heavy_check_mark:
-    - alteração do elemento conforme captura da emissão :heavy_check_mark:
-	- notificação em tela endGame :heavy_check_mark: </br>
-			- cair da plataforma </br>
-			- elemento não existe </br>
-
-- Download: 
-    - Desktop: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases) 
-
 ### :information_source: **Versão 2.0** 
 
 - MENU: 
@@ -29,6 +16,19 @@
 - Download: 
     - Android: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.0)
     - Desktop: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.0)
+    
+### :information_source: **Versão 1.0** 
+
+- Jogo:
+    - Emissões: alfa,beta,gama,neutron :heavy_check_mark:
+    - hud com elemento :heavy_check_mark:
+    - alteração do elemento conforme captura da emissão :heavy_check_mark:
+	- notificação em tela endGame :heavy_check_mark: </br>
+			- cair da plataforma </br>
+			- elemento não existe </br>
+
+- Download: 
+    - Desktop: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases) 
 
 <br> 
 
