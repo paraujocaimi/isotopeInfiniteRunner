@@ -133,9 +133,6 @@ public class Player : MonoBehaviour {
 			_particle.transform.position = this.transform.position;
 			Destroy (_particle, 1f);
 
-			// Update the score.
-			//score++;
-			//scoreText.text = "Score: " + score.ToString();
 		}
 	}
 
