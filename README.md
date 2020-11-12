@@ -27,8 +27,8 @@
   - desktop: pulo :heavy_check_mark:
 
 - Download: 
-    - Android: [Download]()
-    - Desktop: [Download]()
+    - Android: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.0)
+    - Desktop: [Download](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.0)
 
 <br> 
 
