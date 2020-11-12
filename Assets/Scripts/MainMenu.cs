@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-	public void StartGame() {
+
+    public void StartGame() {
         SceneManager.LoadScene(1);
     }
 
@@ -18,7 +20,12 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(2);
     }
 
-	public void Quit() {
+    public void HelpScreen()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Quit() {
 		Application.Quit();
 	}
 }
