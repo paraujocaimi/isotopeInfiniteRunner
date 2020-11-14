@@ -271,6 +271,7 @@ public class Player : MonoBehaviour {
     private void finishGame()
     {
         canMove = false;
+        speed = 0;
         rb.velocity = new Vector3(0f, -4f, 0f);
         StartCoroutine(ReturnToMainMenu(1.5f, 0));
         salvarScore(score);
