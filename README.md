@@ -3,11 +3,12 @@
 ## **Versões**
 
 ### :information_source: **Versão 2.1** 
-	- Versão para apresentar na prévia e salão de iniciação do IFRS
-	- Downloads: 
-		Android: 
-		Desktop: 
-		Web: [LINK](https://paraujocaimi.itch.io/isotope-runner)
+
+- Versão para apresentar a prévia e salão de iniciação do IFRS :heavy_check_mark:
+	- Downloads: </br>
+		Android: [DOWNLOAD](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.1) </br>
+		Desktop: [DOWNLOAD](https://github.com/paraujocaimi/isotopeInfiniteRunner/releases/tag/v2.1) </br>
+	- Jogue Online: [LINK](https://paraujocaimi.itch.io/isotope-runner) </br>
 
 ### :information_source: **Versão 2.0** 
 
