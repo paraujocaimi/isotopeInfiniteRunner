@@ -1675,7 +1675,6 @@ MonoBehaviour:
   hud: {fileID: 2094678352}
   elementNoExist: {fileID: 1714023191}
   isDead: {fileID: 862741213}
-  speed: 2
   canMove: 1
   particle: {fileID: 1659964949181522, guid: b5e4fbbc513b5ef4d9c6c1f4a44a2ca8, type: 3}
   alfa: {fileID: 1014579528}
@@ -1683,6 +1682,7 @@ MonoBehaviour:
   ec: {fileID: 1310077951}
   neutron: {fileID: 309142826}
   scoreText: {fileID: 441366341}
+  speed: 2
 --- !u!54 &1353926972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7316,7 +7316,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935312167}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: e980bc7fbb00dc34b86b95ac842d1920, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: a07fadb24ea940240afba3afc1a692cc, type: 2}
 --- !u!1001 &1950521791
 PrefabInstance:
   m_ObjectHideFlags: 0

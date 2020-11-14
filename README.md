@@ -2,6 +2,13 @@
 
 ## **Versões**
 
+### :information_source: **Versão 2.1** 
+	- Versão para apresentar na prévia e salão de iniciação do IFRS
+	- Downloads: 
+		Android: 
+		Desktop: 
+		Web: [LINK](https://paraujocaimi.itch.io/isotope-runner)
+
 ### :information_source: **Versão 2.0** 
 
 - MENU: 

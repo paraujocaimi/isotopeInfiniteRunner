@@ -331,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -66.99999}
+  m_AnchoredPosition: {x: 0, y: -30.099995}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780101901
@@ -463,7 +463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -108}
+  m_AnchoredPosition: {x: 0, y: -71.100006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920407050
@@ -711,6 +711,57 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4064455920330329352, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 106.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_Text
+      value: Isotope Runner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9007633
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 43b35623d2933d6439c69fbb690a9f8c,
+        type: 3}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064455920330329353, guid: 752f67b3bfbd2104699a0f7af7078ffc,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4064455920647735438, guid: 752f67b3bfbd2104699a0f7af7078ffc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -744,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 4064455921053752894, guid: 752f67b3bfbd2104699a0f7af7078ffc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17
+      value: 53.899998
       objectReference: {fileID: 0}
     - target: {fileID: 4064455921304979434, guid: 752f67b3bfbd2104699a0f7af7078ffc,
         type: 3}
@@ -859,12 +910,12 @@ PrefabInstance:
     - target: {fileID: 4064455921347499351, guid: 752f67b3bfbd2104699a0f7af7078ffc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -152
+      value: -115.100006
       objectReference: {fileID: 0}
     - target: {fileID: 4064455921980341642, guid: 752f67b3bfbd2104699a0f7af7078ffc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 11.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752f67b3bfbd2104699a0f7af7078ffc, type: 3}
@@ -893,6 +944,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5617171982930436449, guid: bb5556e14768aa243a9fa953d3b149f9,
+        type: 3}
+      propertyPath: m_CustomSkybox
+      value: 
+      objectReference: {fileID: 2100000, guid: b8f20d5ca50d16143afc11f5e4af6fc1, type: 2}
     - target: {fileID: 5617171982930436458, guid: bb5556e14768aa243a9fa953d3b149f9,
         type: 3}
       propertyPath: m_Name
