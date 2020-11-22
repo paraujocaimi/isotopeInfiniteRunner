@@ -37,6 +37,8 @@ public class Player : MonoBehaviour {
     //moviments
     [SerializeField]
     float speed = 4f;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
     private enum UserInput
     {
         NONE, TAP, SWIPE
@@ -195,7 +197,8 @@ public class Player : MonoBehaviour {
     public void Jump()
     {
         //Check if player is grounded
-        rb.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2, ForceMode.Impulse);
+        //rb.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 3, ForceMode.Impulse);
+        rb.AddForce(jump * jumpForce, ForceMode.Impulse);
     }
 
     public void JumpPlayer()
