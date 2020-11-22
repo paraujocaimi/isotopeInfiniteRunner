@@ -1683,6 +1683,8 @@ MonoBehaviour:
   neutron: {fileID: 309142826}
   scoreText: {fileID: 441366341}
   speed: 2
+  jump: {x: 0, y: 2, z: 0}
+  jumpForce: 2
 --- !u!54 &1353926972
 Rigidbody:
   m_ObjectHideFlags: 0
