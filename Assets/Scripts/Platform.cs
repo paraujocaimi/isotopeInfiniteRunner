@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.layer == 11)
         {
-            Invoke("FallDown", 1.0f);
+            Invoke("FallDown", 2.0f);
         }
     }
 
