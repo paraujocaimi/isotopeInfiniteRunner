@@ -15,6 +15,5 @@ public class HUD : MonoBehaviour
         a_value.text = a.ToString();
         z_value.text = z.ToString();
         element_name.text = name;
-
     }
 }
