@@ -11,11 +11,9 @@ public class Player : MonoBehaviour {
     private int element_z_value = 1;
     private string element_name_value = "H";
 
+    public PreviewNextElement previewNextElement;
     public GameObject elementNoExist, isDead;
-
 	private Rigidbody rb;
-
-
 
 	[HideInInspector]
 	public bool canMove = true;
@@ -57,6 +55,7 @@ public class Player : MonoBehaviour {
     private void Awake()
     {
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
+        updatePreview();
     }
 
 	// Use this for initialization
@@ -321,6 +320,16 @@ public class Player : MonoBehaviour {
 
     }
 
+    public void updatePreview()
+    {
+
+        previewNextElement.update("alfa", element_a_value, element_z_value, element_name_value);
+        previewNextElement.update("beta", element_a_value, element_z_value, element_name_value);
+        previewNextElement.update("ec", element_a_value, element_z_value, element_name_value);
+        previewNextElement.update("neutron", element_a_value, element_z_value, element_name_value);
+
+    }
+
     private void GetEmission(Emition_Type.TypesEmittion emittion_type){
 
         bool exists = false;
@@ -358,6 +367,8 @@ public class Player : MonoBehaviour {
             finishGame();
         }
 
+        updatePreview();
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
     }
+
 }
