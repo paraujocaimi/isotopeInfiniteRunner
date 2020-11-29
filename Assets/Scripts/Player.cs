@@ -142,8 +142,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void UpdateNextIsotope()
+    public void UpdateNextIsotope()
     {
+
         Debug.Log("UPDATE NEXT ISOTOPE CANVAS");
         GetNextEmission("alfa");
         GetNextEmission("neutron");
@@ -251,7 +252,6 @@ public class Player : MonoBehaviour {
         }
     }
 		
-
 	// Control player direction.
 	private void ChangeBoolean() {
 		isMovingRight = !isMovingRight;
@@ -425,6 +425,7 @@ public class Player : MonoBehaviour {
         }
 
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
+        UpdateNextIsotope();
 
     }
 
