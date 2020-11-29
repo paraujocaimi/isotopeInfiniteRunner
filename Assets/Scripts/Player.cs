@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,11 +56,10 @@ public class Player : MonoBehaviour {
     private void Awake()
     {
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
-        updatePreview();
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = this.GetComponent<Rigidbody> ();
         elementNoExist.SetActive(false);
         isDead.SetActive(false);
@@ -73,6 +73,9 @@ public class Player : MonoBehaviour {
         {
             Direction = Vector3.zero;
         }
+
+        UpdateNextIsotope();
+
     }
 
 	// Update is called once per frame
@@ -80,7 +83,7 @@ public class Player : MonoBehaviour {
 
         UpdateUserInput();
 
-        if(canMove == true)
+        if (canMove == true)
         {
             speed = 3;
 
@@ -137,7 +140,15 @@ public class Player : MonoBehaviour {
         {
             moviment();
         }
+    }
 
+    private void UpdateNextIsotope()
+    {
+        Debug.Log("UPDATE NEXT ISOTOPE CANVAS");
+        GetNextEmission("alfa");
+        GetNextEmission("neutron");
+        GetNextEmission("beta");
+        GetNextEmission("ec");
     }
 
     private void UpdateUserInput()
@@ -299,8 +310,8 @@ public class Player : MonoBehaviour {
 			_particle.transform.position = this.transform.position;
 			Destroy (_particle, 1f);
 
-		}
-	}
+        }
+    }
 
     public void UpdateScore()
     {
@@ -320,13 +331,59 @@ public class Player : MonoBehaviour {
 
     }
 
-    public void updatePreview()
+    private void GetNextEmission(string emission)
     {
 
-        previewNextElement.update("alfa", element_a_value, element_z_value, element_name_value);
-        previewNextElement.update("beta", element_a_value, element_z_value, element_name_value);
-        previewNextElement.update("ec", element_a_value, element_z_value, element_name_value);
-        previewNextElement.update("neutron", element_a_value, element_z_value, element_name_value);
+        bool exists = false;
+        int a = element_a_value;
+        int z = element_z_value;
+        string name = "";
+
+
+        switch (emission)
+        {
+            case "alfa":
+                a += -4;
+                z += -2; break;
+            case "beta":
+                z += +1;
+                break;
+            case "ec":
+                z += -1;
+                break;
+            case "neutron":
+                a += 1;
+                break;
+        }
+
+
+        foreach (Isotope isotope in JSONReader.emissionJson.isotopes)
+        {
+            Debug.Log("oi sou o foreach");
+
+            if (z == isotope.Z && a == isotope.A)
+            {
+                exists = true;
+                name = isotope.Atomic;
+            }
+
+        }
+
+        switch (emission) {
+            case "alfa":
+                previewNextElement.updateAlfaHud(a, z, name, exists);
+                break;
+            case "beta":
+                previewNextElement.updateBetaHud(a, z, name, exists);
+                break;
+            case "ec":
+                previewNextElement.updateCapturaEletronicaHud(a, z, name, exists);
+                break;
+            case "neutron":
+                previewNextElement.updateNeutronHud(a, z, name, exists);
+                break;
+        }
+
 
     }
 
@@ -362,13 +419,13 @@ public class Player : MonoBehaviour {
 
         }
 
-        if(exists.Equals(false)){
+        if (exists.Equals(false)){
             elementNoExist.SetActive(true);
             finishGame();
         }
 
-        updatePreview();
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
+
     }
 
 }
