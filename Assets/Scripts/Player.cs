@@ -145,7 +145,6 @@ public class Player : MonoBehaviour {
     public void UpdateNextIsotope()
     {
 
-        Debug.Log("UPDATE NEXT ISOTOPE CANVAS");
         GetNextEmission("alfa");
         GetNextEmission("neutron");
         GetNextEmission("beta");
@@ -309,7 +308,7 @@ public class Player : MonoBehaviour {
 			GameObject _particle = Instantiate (particle) as GameObject;
 			_particle.transform.position = this.transform.position;
 			Destroy (_particle, 1f);
-
+            SendMessageUpwards("UpdateNextIsotope");
         }
     }
 
@@ -337,14 +336,15 @@ public class Player : MonoBehaviour {
         bool exists = false;
         int a = element_a_value;
         int z = element_z_value;
-        string name = "";
+        string name = "-";
 
 
         switch (emission)
         {
             case "alfa":
                 a += -4;
-                z += -2; break;
+                z += -2;
+                break;
             case "beta":
                 z += +1;
                 break;
@@ -359,7 +359,6 @@ public class Player : MonoBehaviour {
 
         foreach (Isotope isotope in JSONReader.emissionJson.isotopes)
         {
-            Debug.Log("oi sou o foreach");
 
             if (z == isotope.Z && a == isotope.A)
             {
@@ -425,7 +424,6 @@ public class Player : MonoBehaviour {
         }
 
         hud.updateValuesHUD(element_a_value, element_z_value, element_name_value);
-        UpdateNextIsotope();
 
     }
 
