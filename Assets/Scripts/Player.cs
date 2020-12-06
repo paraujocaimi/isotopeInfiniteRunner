@@ -285,7 +285,7 @@ public class Player : MonoBehaviour {
         canMove = false;
         speed = 0;
         rb.velocity = new Vector3(0f, -4f, 0f);
-        StartCoroutine(ReturnToMainMenu(1.5f, 0));
+        StartCoroutine(ReturnToMainMenu(3.0f, 1));
         salvarScore(score);
     }
 

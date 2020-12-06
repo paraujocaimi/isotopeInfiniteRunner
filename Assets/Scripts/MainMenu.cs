@@ -31,6 +31,10 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void Quit() {
-		Application.Quit();
+
+         if (Application.platform == RuntimePlatform.WebGLPlayer) {
+            Application.Quit();
+         }
+		
 	}
 }
